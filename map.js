@@ -64,7 +64,7 @@ searchControl.on('search:locationfound', function(e) {   // Higlight the search 
 		});
 	e.layer.bringToFront();
 })
-.on('search:collapsed', function(e) {
+.on('search:expanded', function(e) {
 		munis.eachLayer(function(layer) { //restauramos el color del elemento
 			munis.resetStyle(layer);
 		});	
