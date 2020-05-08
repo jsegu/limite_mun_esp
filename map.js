@@ -32,7 +32,7 @@ var pnoa = L.tileLayer.wms("http://www.ign.es/wms-inspire/pnoa-ma?SERVICE=WMS&",
 });
 var map = L.map('map', {
 		center: [40, -3],
-		zoom: 6,
+		zoom: 5,
 		minZoom: 3,
 		maxZoom: 20,
 		maxBounds: [
@@ -60,7 +60,7 @@ var searchControl = new L.Control.Search({
 searchControl.on('search:locationfound', function(e) {   // Higlight the search result
     e.layer.setStyle({
 		color: '#ff0000', 
-		weight: 6
+		weight: 3.5
 		});
 	e.layer.bringToFront();
 })
