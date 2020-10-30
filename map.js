@@ -57,12 +57,15 @@ var searchControl = new L.Control.Search({
 	marker: false,
 	zoom: 12
 });
+var buscat;
 searchControl.on('search:locationfound', function(e) {   // Higlight the search result
-    e.layer.setStyle({
+	buscat = e
+	e.layer.setStyle({
 		color: '#ff0000', 
 		weight: 3.5
 		});
 	e.layer.bringToFront();
+	// var buscat = e['text'];
 })
 .on('search:expanded', function(e) {
 		munis.eachLayer(function(layer) { //restauramos el color del elemento
@@ -78,3 +81,26 @@ L.control.layers(base, data).addTo(map);
 
 // Scale
 L.control.scale({imperial: false}).addTo(map);
+
+//export to kml
+// function baixarr(){
+	// // console.info(buscat.layer.feature.properties["NAMEUNIT"]); //nom municipi
+	// // then export to kml
+    // var kml = tokml(buscat.layer.feature);
+	// kml.download = buscat.layer.feature.properties["NAMEUNIT"]+".kml";
+// }
+function baixarr(){
+	// console.info(buscat.layer.feature.properties["NAMEUNIT"]); //nom municipi
+	// then export to kml
+	if (buscat === undefined) {
+		alert("Primero selecciona un municipio");
+	}
+	else {
+		var kml = tokml(buscat.layer.feature);
+		var hiddenElement = document.createElement('a')
+		hiddenElement.href = 'data:attachment/text,' + encodeURI(kml);
+		hiddenElement.target = '_blank';
+		hiddenElement.download = buscat.layer.feature.properties["NAMEUNIT"]+".kml";
+		hiddenElement.click();
+	}
+}
