@@ -34,7 +34,7 @@ var map = L.map('map', {
 		center: [40, -3],
 		zoom: 5,
 		minZoom: 3,
-		maxZoom: 20,
+		maxZoom: 18,
 		maxBounds: [
 			[20, -50],
 			[50, 50]
