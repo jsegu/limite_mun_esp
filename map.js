@@ -17,10 +17,11 @@ function style(feature) {
 // Capas
 var munis = L.geoJson(munis, {
 	onEachFeature: popup,
-	style: style	
+	style: style,
+	attribution: '| Download kml by ©<a href="https://github.com/mapbox/tokml"> Mapbox tokml</a>'
 	});
 var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+	attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a>',
 	maxZoom: 18
 });	
 var pnoa = L.tileLayer.wms("http://www.ign.es/wms-inspire/pnoa-ma?SERVICE=WMS&", {
@@ -28,7 +29,7 @@ var pnoa = L.tileLayer.wms("http://www.ign.es/wms-inspire/pnoa-ma?SERVICE=WMS&",
 	format: 'image/jpeg',
 	transparent: true,
 	version: '1.3.0',//wms version (ver get capabilities)
-	attribution: "PNOA WMS. Cedido por © <a href='http://www.ign.es'>Instituto Geográfico Nacional de España"
+	attribution: "| Map data © <a href='http://www.ign.es'>IGN"
 });
 var map = L.map('map', {
 		center: [40, -3],
